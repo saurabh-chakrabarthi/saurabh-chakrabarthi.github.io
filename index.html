@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saurabh Chakrabarthi — Senior Platform & Backend Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f7f7f5; --surface: #ffffff; --border: #e8e8e4;
+      --text-primary: #1a1a18; --text-secondary: #6b6b65; --text-muted: #a8a8a0;
+      --accent: #0a6ef5; --accent-light: #e8f0fe; --accent-muted: #d4e4fd;
+      --green: #16a34a; --green-light: #dcfce7;
+      --amber: #d97706;
+      --mono: 'DM Mono', monospace; --sans: 'DM Sans', sans-serif;
+      --radius: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text-primary); line-height: 1.6; font-size: 15px; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(247,247,245,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 max(24px, calc((100vw - 1080px)/2)); height: 56px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-weight: 600; font-size: 15px; color: var(--text-primary); text-decoration: none; letter-spacing: -0.3px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta { background: var(--text-primary) !important; color: #fff !important; padding: 6px 16px; border-radius: 6px; font-size: 13px !important; }
+    .nav-cta:hover { opacity: 0.8 !important; color: #fff !important; }
+
+    /* LAYOUT */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 72px 0; }
+
+    /* HERO */
+    .hero { padding: 80px 0 64px; border-bottom: 1px solid var(--border); }
+    .hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-family: var(--mono); color: var(--green); background: var(--green-light); padding: 4px 10px; border-radius: 100px; margin-bottom: 20px; font-weight: 500; }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .hero h1 { font-size: clamp(30px, 4.5vw, 50px); font-weight: 600; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 16px; }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-size: 16px; color: var(--text-secondary); max-width: 560px; line-height: 1.7; margin-bottom: 32px; }
+    .hero-sub strong { color: var(--text-primary); font-weight: 600; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; text-decoration: none; transition: background 0.15s, transform 0.1s; }
+    .btn-primary:hover { background: #0860d8; transform: translateY(-1px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); color: var(--text-primary); border: 1px solid var(--border); padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color 0.15s, transform 0.1s; }
+    .btn-outline:hover { border-color: #bbb; transform: translateY(-1px); }
+    .hero-avatar { width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-light), var(--accent-muted)); border: 3px solid var(--surface); box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center; font-size: 36px; font-weight: 600; color: var(--accent); letter-spacing: -1px; flex-shrink: 0; }
+    .hero-stats { display: flex; gap: 32px; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+    .stat-item { display: flex; flex-direction: column; gap: 2px; }
+    .stat-val { font-size: 22px; font-weight: 600; letter-spacing: -0.5px; color: var(--text-primary); font-family: var(--mono); }
+    .stat-label { font-size: 11px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* ACCOMPLISHMENTS */
+    .accomplishments { padding: 48px 0; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .acc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+    .acc-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; }
+    .acc-metric { font-size: 26px; font-weight: 600; font-family: var(--mono); letter-spacing: -1px; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+    .acc-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+    /* SECTION HEADERS */
+    .section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 32px; }
+    .section-tag { font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--accent); background: var(--accent-light); padding: 3px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .section-title { font-size: 22px; font-weight: 600; letter-spacing: -0.5px; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+    .skill-category { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow); }
+    .skill-category-name { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 10px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tag { font-size: 12px; font-family: var(--mono); color: var(--text-secondary); background: var(--bg); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; }
+
+    /* EXPERIENCE */
+    .timeline { display: flex; flex-direction: column; }
+    .timeline-item { display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 32px 0; border-bottom: 1px solid var(--border); }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-left { display: flex; flex-direction: column; gap: 8px; padding-top: 3px; }
+    .timeline-date { font-size: 12px; font-family: var(--mono); color: var(--text-muted); }
+    .company-logo-placeholder { width: 32px; height: 32px; border-radius: 8px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--accent); font-family: var(--mono); }
+    .timeline-company { font-size: 11.5px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .timeline-role { font-size: 16px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 10px; }
+    .timeline-desc { font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 12px; }
+    .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .timeline-bullets li { font-size: 13px; color: var(--text-secondary); line-height: 1.55; padding-left: 16px; position: relative; }
+    .timeline-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 11px; top: 2px; }
+    .timeline-tech { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tech-pill { font-size: 11.5px; font-family: var(--mono); color: var(--accent); background: var(--accent-light); padding: 3px 8px; border-radius: 4px; font-weight: 500; }
+
+    /* CERT */
+    .cert-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; box-shadow: var(--shadow); display: flex; align-items: center; gap: 16px; }
+    .cert-icon { width: 44px; height: 44px; border-radius: 10px; background: #ff9900; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .cert-name { font-size: 14px; font-weight: 600; }
+    .cert-issuer { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .cert-date { font-size: 11px; font-family: var(--mono); color: var(--green); margin-top: 4px; }
+
+    /* GITHUB */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+    .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow); transition: box-shadow 0.2s, transform 0.2s; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; }
+    .project-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .project-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .project-name { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; flex: 1; }
+    .project-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; flex: 1; }
+    .project-meta { display: flex; align-items: center; gap: 14px; margin-top: auto; }
+    .project-lang { display: flex; align-items: center; gap: 5px; font-size: 12px; font-family: var(--mono); color: var(--text-muted); }
+    .lang-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .project-stars { font-size: 12px; font-family: var(--mono); color: var(--text-muted); }
+    .loading-state { grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted); font-size: 13px; font-family: var(--mono); }
+
+    /* LEETCODE */
+    .leetcode-wrapper { display: grid; grid-template-columns: auto 1fr; gap: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; box-shadow: var(--shadow); align-items: center; }
+    .lc-ring-container { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .lc-ring { position: relative; width: 100px; height: 100px; }
+    .lc-ring svg { transform: rotate(-90deg); }
+    .lc-ring-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+    .lc-total-num { font-size: 22px; font-weight: 600; font-family: var(--mono); letter-spacing: -1px; line-height: 1; }
+    .lc-total-label { font-size: 10px; color: var(--text-muted); }
+    .lc-rank { font-size: 11px; font-family: var(--mono); color: var(--text-muted); }
+    .lc-stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .lc-stat-block { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+    .lc-stat-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .lc-stat-easy .lc-stat-label { color: var(--green); }
+    .lc-stat-medium .lc-stat-label { color: var(--amber); }
+    .lc-stat-hard .lc-stat-label { color: #e11d48; }
+    .lc-stat-num { font-size: 24px; font-weight: 600; font-family: var(--mono); letter-spacing: -0.5px; }
+    .lc-stat-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; font-family: var(--mono); }
+    .lc-loading { font-size: 13px; font-family: var(--mono); color: var(--text-muted); text-align: center; padding: 20px; }
+
+    /* CONTACT */
+    .contact-section { background: var(--text-primary); border-radius: 16px; padding: 52px 48px; text-align: center; }
+    .contact-section h2 { font-size: 28px; font-weight: 600; color: #fff; letter-spacing: -0.7px; margin-bottom: 10px; }
+    .contact-section p { color: rgba(255,255,255,0.5); font-size: 15px; margin-bottom: 28px; }
+    .contact-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .contact-link { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; text-decoration: none; transition: transform 0.15s, opacity 0.15s; }
+    .contact-link:hover { transform: translateY(-2px); opacity: 0.9; }
+    .contact-link-github { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.15); }
+    .contact-link-linkedin { background: #0077b5; color: #fff; }
+    .contact-link-email { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.15); }
+
+    footer { text-align: center; padding: 24px; font-size: 12px; font-family: var(--mono); color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 48px; }
+    .section-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 680px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-avatar { display: none; }
+      .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+      .timeline-left { flex-direction: row; align-items: center; gap: 10px; }
+      .lc-stats-grid { grid-template-columns: 1fr; }
+      .leetcode-wrapper { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .contact-section { padding: 36px 24px; }
+      .acc-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">SC<span>.</span>dev</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#leetcode">LeetCode</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">Open to opportunities</div>
+        <h1>Saurabh<br/>Chakrabarthi<em>.</em></h1>
+        <p class="hero-sub">
+          Senior Backend & Platform Engineer with <strong>14+ years</strong> building and scaling 
+          cloud-native, data-intensive systems for global enterprises — <strong>Oracle</strong>, 
+          <strong>PayPal</strong>, <strong>Vanguard</strong>, and <strong>MoneyGram</strong>. 
+          I work at the intersection of distributed systems, cloud infrastructure, and business-critical platforms, 
+          with a focus on reliability, scale, and cost efficiency.
+        </p>
+        <div class="hero-actions">
+          <a href="https://www.linkedin.com/in/saurabh-chakrabarthi/" target="_blank" class="btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/saurabh-chakrabarthi" target="_blank" class="btn-outline">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="mailto:saurabhchako89@gmail.com" class="btn-outline">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Email
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item"><span class="stat-val">14+</span><span class="stat-label">Years Exp.</span></div>
+          <div class="stat-item"><span class="stat-val">5</span><span class="stat-label">Companies</span></div>
+          <div class="stat-item"><span class="stat-val" id="stat-repos">—</span><span class="stat-label">GH Repos</span></div>
+          <div class="stat-item"><span class="stat-val" id="stat-lc">—</span><span class="stat-label">LC Solved</span></div>
+          <div class="stat-item"><span class="stat-val">$50K+</span><span class="stat-label">OpEx Saved/yr</span></div>
+        </div>
+      </div>
+      <div class="hero-avatar">SC</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOMPLISHMENTS -->
+<div class="accomplishments">
+  <div class="container">
+    <div class="acc-grid fade-in">
+      <div class="acc-card">
+        <div class="acc-metric">2wks → 6d</div>
+        <div class="acc-desc">Cut release cycles with zero-downtime blue-green deployments via Jenkins, Terraform & Kubernetes</div>
+      </div>
+      <div class="acc-card">
+        <div class="acc-metric">4B+ rows</div>
+        <div class="acc-desc">Eliminated 15-min production timeouts on massive Snowflake datasets via Iceberg table re-architecture</div>
+      </div>
+      <div class="acc-card">
+        <div class="acc-metric">$50K+/yr</div>
+        <div class="acc-desc">Saved in annual OpEx by filtering low-value logs with Fluent Bit — reduced ingestion by ~40%</div>
+      </div>
+      <div class="acc-card">
+        <div class="acc-metric">↓ 60%</div>
+        <div class="acc-desc">Reduced incident impact via Snowflake break-glass access model with Slack/PagerDuty automation</div>
+      </div>
+      <div class="acc-card">
+        <div class="acc-metric">+25%</div>
+        <div class="acc-desc">Increased API reliability on high-volume payment platforms via Redis caching and circuit breakers</div>
+      </div>
+      <div class="acc-card">
+        <div class="acc-metric">25M+</div>
+        <div class="acc-desc">Daily Braintree transactions processed on PayPal's Snowglobe platform across USA, AU & Europe</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">Stack</span>
+      <h2 class="section-title">Skills & Technologies</h2>
+    </div>
+    <div class="skills-grid fade-in">
+      <div class="skill-category">
+        <div class="skill-category-name">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Java</span><span class="skill-tag">Scala</span>
+          <span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">PL/SQL</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-category-name">Platform Engineering</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Kubernetes/EKS</span><span class="skill-tag">Docker</span>
+          <span class="skill-tag">Terraform</span><span class="skill-tag">CloudFormation</span><span class="skill-tag">Jenkins</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-category-name">Cloud</div>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS</span><span class="skill-tag">OCI</span>
+          <span class="skill-tag">EC2/EKS/Lambda</span><span class="skill-tag">Aurora Serverless</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-category-name">Data Engineering</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Snowflake</span><span class="skill-tag">Apache Spark</span>
+          <span class="skill-tag">Kafka</span><span class="skill-tag">Hadoop</span><span class="skill-tag">Redis</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-category-name">Observability</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Datadog</span><span class="skill-tag">Splunk</span>
+          <span class="skill-tag">Grafana</span><span class="skill-tag">Prometheus</span>
+          <span class="skill-tag">OpenTelemetry</span><span class="skill-tag">PagerDuty</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-category-name">Backend / APIs</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Spring Boot</span><span class="skill-tag">Micronaut</span>
+          <span class="skill-tag">REST / SOAP</span><span class="skill-tag">OAuth 2.0</span><span class="skill-tag">Microservices</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">Career</span>
+      <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="timeline fade-in">
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="company-logo-placeholder">ORC</div>
+          <div class="timeline-date">Dec 2025 — Present</div>
+        </div>
+        <div>
+          <div class="timeline-company">Oracle Health & AI</div>
+          <div class="timeline-role">Senior Member of Technical Staff</div>
+          <div class="timeline-desc">Contributing to the EHRC clinical platform — core subset of Oracle's CDA architecture on OCI — supporting scalable, secure EHR applications. Building shared platform libraries, guardrails, and reference templates used across multiple clinical engineering teams.</div>
+          <ul class="timeline-bullets">
+            <li>Designing platform guardrails to enforce approved library versions with build-time validation and failure mechanisms</li>
+            <li>Developing Minimum Acceptance Test suites for reference templates enforcing infrastructure best practices and security compliance</li>
+            <li>Configuring OCI Network Firewall for whitelist-based ingress/egress access control between trusted services</li>
+            <li>Container security and vulnerability management using Security Central and Grype-based scanning pipelines</li>
+            <li>Authoring Architecture Decision Records to define and document platform-level decisions</li>
+          </ul>
+          <div class="timeline-tech">
+            <span class="tech-pill">OCI</span><span class="tech-pill">Micronaut</span>
+            <span class="tech-pill">Terraform</span><span class="tech-pill">Java</span><span class="tech-pill">Kubernetes</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="company-logo-placeholder">PPL</div>
+          <div class="timeline-date">Dec 2024 — Dec 2025</div>
+        </div>
+        <div>
+          <div class="timeline-company">PayPal</div>
+          <div class="timeline-role">Senior Backend Engineer — Platform Engineering</div>
+          <div class="timeline-desc"><strong>Project: Snowglobe</strong> — PayPal's next-gen financial processing platform for Braintree transactions. Central post-processing engine handling <strong>25M+ daily transactions</strong> and multi-billion payment flows across USA, Australia, and Europe.</div>
+          <ul class="timeline-bullets">
+            <li>Resolved critical 15-min production timeouts on 4B+ record datasets by re-architecting Dynamic Iceberg table initialization (on_create → on_schedule)</li>
+            <li>Engineered real-time data pipelines with Snowflake Streams, Tasks, and UDFs for on-demand metrics computation</li>
+            <li>Built end-to-end CI/CD in Jenkins with Gradle and Flyway, managing schema migrations across Dev/QA/Prod</li>
+            <li>Implemented Snowflake task monitoring system integrated with Slack/PagerDuty for automated failure alerting</li>
+            <li>Integrated Datadog observability with alerting and dashboards, reducing incident response time by 40%</li>
+          </ul>
+          <div class="timeline-tech">
+            <span class="tech-pill">Snowflake</span><span class="tech-pill">Terraform</span>
+            <span class="tech-pill">Java</span><span class="tech-pill">Jenkins</span>
+            <span class="tech-pill">Flyway</span><span class="tech-pill">Datadog</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="company-logo-placeholder">VGD</div>
+          <div class="timeline-date">Nov 2023 — Dec 2024</div>
+        </div>
+        <div>
+          <div class="timeline-company">Vanguard</div>
+          <div class="timeline-role">Senior Software Engineer — DevSecOps</div>
+          <div class="timeline-desc">API Security on CA Layer 7 Gateway for Vanguard Authentication Services. Orchestrated deployment and scaling of API Gateway on AWS EKS, delivering resilient auth/authz services to Vanguard users.</div>
+          <ul class="timeline-bullets">
+            <li>Deployed CA Layer 7 on AWS EKS with auto-scaling, rolling upgrades, and Redis-backed JWT caching to minimize authentication latency</li>
+            <li>Built secure AWS infrastructure: EC2, S3, CloudFormation, ElastiCache, Route 53, Aurora Serverless</li>
+            <li>Designed observability tooling with Splunk, Grafana, Honeycomb, CloudWatch via OpenTelemetry + FluentBit</li>
+            <li>Achieved ~$50K/year CloudWatch cost savings through log filtering and pipeline optimization</li>
+          </ul>
+          <div class="timeline-tech">
+            <span class="tech-pill">AWS EKS</span><span class="tech-pill">Kubernetes</span>
+            <span class="tech-pill">Redis</span><span class="tech-pill">Splunk</span>
+            <span class="tech-pill">OpenTelemetry</span><span class="tech-pill">FluentBit</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="company-logo-placeholder">MGI</div>
+          <div class="timeline-date">Mar 2021 — Nov 2023</div>
+        </div>
+        <div>
+          <div class="timeline-company">MoneyGram International</div>
+          <div class="timeline-role">Senior Software Developer — Team Lead</div>
+          <div class="timeline-desc">Financial API development for cross-border payment remittance across global transaction corridors. Integrated VISA, Mastercard, and crypto payment processors. Led distributed engineering teams across onsite and offshore locations.</div>
+          <ul class="timeline-bullets">
+            <li>Enhanced transaction reliability by 25% using retry patterns, circuit breakers, and Redis caching</li>
+            <li>Delivered LATAM and SEPA payment corridor integrations: Visa Checkout, Uniteller, Airpak</li>
+            <li>Enforced API security via mutual SSL, OAuth 2.0, JWT tokens; auditing and compliance via Splunk/CloudWatch</li>
+            <li>Architected AWS infrastructure using EKS, RDS, S3, EC2, Lambda, and ElastiCache</li>
+          </ul>
+          <div class="timeline-tech">
+            <span class="tech-pill">Java</span><span class="tech-pill">Spring Boot</span>
+            <span class="tech-pill">AWS</span><span class="tech-pill">Redis</span>
+            <span class="tech-pill">OAuth 2.0</span><span class="tech-pill">CA Layer 7</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="company-logo-placeholder">CGN</div>
+          <div class="timeline-date">Oct 2011 — Mar 2021</div>
+        </div>
+        <div>
+          <div class="timeline-company">Cognizant</div>
+          <div class="timeline-role">Software Developer → Tech Lead → Full-Stack Lead</div>
+          <div class="timeline-desc">9.5 years across India and the US, progressing from developer to team lead. Built real-time data streaming platforms, REST/SOAP APIs, ETL pipelines, and full-stack web applications for enterprise clients.</div>
+          <ul class="timeline-bullets">
+            <li>Built scalable real-time data ingestion systems using Spark, Scala, Kafka, Hadoop, and Snowflake</li>
+            <li>Developed REST and SOAP APIs in microservices with Spring Boot; OAuth 2.0 security and AWS integrations</li>
+            <li>Implemented CI/CD pipelines with Jenkins & BitBucket; enhanced coverage with JUnit & Mockito</li>
+            <li>Developed internationalized online ordering system with menu-POS integrations and batch processing via Java Threadpool</li>
+          </ul>
+          <div class="timeline-tech">
+            <span class="tech-pill">Java</span><span class="tech-pill">Spark</span>
+            <span class="tech-pill">Kafka</span><span class="tech-pill">Scala</span>
+            <span class="tech-pill">AWS</span><span class="tech-pill">Spring Boot</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- EDUCATION & CERTS -->
+<section id="education">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">Education</span>
+      <h2 class="section-title">Education & Certifications</h2>
+    </div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;" class="fade-in">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px;min-width:280px;">
+        <div class="timeline-company">West Bengal University of Technology</div>
+        <div class="timeline-role" style="font-size:15px;">B.Tech — Information Technology</div>
+        <div class="timeline-date" style="margin-top:2px;">2007 – 2011 · Kolkata, India</div>
+        <div class="timeline-tech" style="margin-top:8px;">
+          <span class="tech-pill">Core Java</span><span class="tech-pill">.NET Framework</span>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">☁️</div>
+        <div>
+          <div class="cert-name">AWS Certified Cloud Practitioner</div>
+          <div class="cert-issuer">Amazon Web Services (AWS)</div>
+          <div class="cert-date">✓ Valid Dec 2022 — Dec 2028</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- GITHUB PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">GitHub</span>
+      <h2 class="section-title">Projects</h2>
+    </div>
+    <div class="projects-grid fade-in" id="github-projects">
+      <div class="loading-state">Fetching repositories from GitHub...</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- LEETCODE -->
+<section id="leetcode">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-tag">LeetCode</span>
+      <h2 class="section-title">Problem Solving</h2>
+    </div>
+    <div class="fade-in" id="leetcode-container">
+      <div class="lc-loading">Fetching LeetCode stats...</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section>
+  <div class="container">
+    <div class="contact-section fade-in" id="contact">
+      <h2>Let's build something great.</h2>
+      <p>Open to senior platform engineering, backend architecture, and cloud infrastructure roles.</p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/saurabh-chakrabarthi/" target="_blank" class="contact-link contact-link-linkedin">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/saurabh-chakrabarthi" target="_blank" class="contact-link contact-link-github">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="mailto:saurabhchako89@gmail.com" class="contact-link contact-link-email">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Email me
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    Built with HTML · GitHub API · LeetCode API · Deployed on Vercel &mdash; &copy; 2025 Saurabh Chakrabarthi
+  </div>
+</footer>
+
+<script>
+  const langColors = { Python:'#3572A5',JavaScript:'#f1e05a',TypeScript:'#2b7489',Java:'#b07219','C++':'#f34b7d',C:'#555555',Go:'#00ADD8',Rust:'#dea584',Shell:'#89e051',Scala:'#c22d40',Ruby:'#701516',HTML:'#e34c26',CSS:'#563d7c',Jupyter:'#DA5B0B',R:'#198CE7' };
+
+  async function loadGitHubProjects() {
+    const container = document.getElementById('github-projects');
+    try {
+      const res = await fetch('https://api.github.com/users/saurabh-chakrabarthi/repos?sort=updated&per_page=30');
+      if (!res.ok) throw new Error();
+      const repos = await res.json();
+      const filtered = repos.filter(r => !r.fork).sort((a,b) => (b.stargazers_count+b.watchers_count)-(a.stargazers_count+a.watchers_count)).slice(0,9);
+      document.getElementById('stat-repos').textContent = repos.filter(r=>!r.fork).length;
+      if (!filtered.length) { container.innerHTML = '<div class="loading-state">No public repos found yet.</div>'; return; }
+      container.innerHTML = filtered.map(r => `
+        <a href="${r.html_url}" target="_blank" class="project-card">
+          <div class="project-card-header"><span class="project-name">${r.name}</span><span style="font-size:16px;opacity:0.4">↗</span></div>
+          <p class="project-desc">${r.description||'No description provided.'}</p>
+          <div class="project-meta">
+            ${r.language?`<span class="project-lang"><span class="lang-dot" style="background:${langColors[r.language]||'#888'}"></span>${r.language}</span>`:''}
+            ${r.stargazers_count>0?`<span class="project-stars">★ ${r.stargazers_count}</span>`:''}
+            ${r.updated_at?`<span class="project-stars" style="margin-left:auto">${new Date(r.updated_at).toLocaleDateString('en-US',{month:'short',year:'numeric'})}</span>`:''}
+          </div>
+        </a>`).join('');
+    } catch(e) {
+      container.innerHTML = `<div class="loading-state">Could not load repos. <a href="https://github.com/saurabh-chakrabarthi" target="_blank" style="color:var(--accent)">View on GitHub →</a></div>`;
+    }
+  }
+
+  async function loadLeetCode() {
+    const container = document.getElementById('leetcode-container');
+    try {
+      const res = await fetch('https://leetcode-stats-api.herokuapp.com/SAURABHCHAKO89');
+      if (!res.ok) throw new Error();
+      const d = await res.json();
+      const total=d.totalSolved||0,easy=d.easySolved||0,medium=d.mediumSolved||0,hard=d.hardSolved||0;
+      document.getElementById('stat-lc').textContent = total;
+      const r=38,circ=2*Math.PI*r,dash=Math.min(total/(d.totalQuestions||3000),1)*circ;
+      container.innerHTML = `
+        <div class="leetcode-wrapper">
+          <div class="lc-ring-container">
+            <div class="lc-ring">
+              <svg width="100" height="100" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="${r}" fill="none" stroke="var(--border)" stroke-width="7"/>
+                <circle cx="50" cy="50" r="${r}" fill="none" stroke="var(--accent)" stroke-width="7" stroke-dasharray="${dash.toFixed(1)} ${circ.toFixed(1)}" stroke-linecap="round"/>
+              </svg>
+              <div class="lc-ring-center"><div class="lc-total-num">${total}</div><div class="lc-total-label">Solved</div></div>
+            </div>
+            <div class="lc-rank">${d.ranking?'Rank #'+d.ranking.toLocaleString():''}</div>
+          </div>
+          <div class="lc-stats-grid">
+            <div class="lc-stat-block lc-stat-easy"><div class="lc-stat-label">Easy</div><div class="lc-stat-num">${easy}</div><div class="lc-stat-sub">/ ${d.totalEasy||'—'} total</div></div>
+            <div class="lc-stat-block lc-stat-medium"><div class="lc-stat-label">Medium</div><div class="lc-stat-num">${medium}</div><div class="lc-stat-sub">/ ${d.totalMedium||'—'} total</div></div>
+            <div class="lc-stat-block lc-stat-hard"><div class="lc-stat-label">Hard</div><div class="lc-stat-num">${hard}</div><div class="lc-stat-sub">/ ${d.totalHard||'—'} total</div></div>
+          </div>
+        </div>
+        <p style="margin-top:12px;font-size:12px;color:var(--text-muted);font-family:var(--mono)">
+          View full profile → <a href="https://leetcode.com/u/SAURABHCHAKO89/" target="_blank" style="color:var(--accent)">leetcode.com/u/SAURABHCHAKO89</a>
+        </p>`;
+    } catch(e) {
+      container.innerHTML = `<div class="leetcode-wrapper"><div class="lc-loading">Could not load stats. <a href="https://leetcode.com/u/SAURABHCHAKO89/" target="_blank" style="color:var(--accent)">View on LeetCode →</a></div></div>`;
+    }
+  }
+
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }), {threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  loadGitHubProjects();
+  loadLeetCode();
+</script>
+</body>
+</html>
