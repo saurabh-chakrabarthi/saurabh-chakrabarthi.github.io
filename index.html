@@ -210,7 +210,9 @@
           <div class="stat-item"><span class="stat-val">$50K+</span><span class="stat-label">OpEx Saved/yr</span></div>
         </div>
       </div>
-      <div class="hero-avatar">SC</div>
+      <div class="hero-avatar" style="background:none;border:none;padding:0;overflow:hidden;">
+        <img src="https://avatars.githubusercontent.com/u/25109649" alt="Saurabh Chakrabarthi" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+      </div>
     </div>
   </div>
 </section>
@@ -515,15 +517,59 @@
 
 <hr class="section-divider"/>
 
-<!-- GITHUB PROJECTS -->
+<!-- LEARNING & PRACTICE -->
 <section id="projects">
   <div class="container">
     <div class="section-header fade-in">
-      <span class="section-tag">GitHub</span>
-      <h2 class="section-title">Selected Repositories</h2>
+      <span class="section-tag">Learning</span>
+      <h2 class="section-title">Learning & Practice</h2>
     </div>
-    <div class="projects-grid fade-in" id="github-projects">
-      <div class="loading-state">Fetching repositories from GitHub...</div>
+    <div class="projects-grid fade-in">
+      
+      <a href="https://github.com/saurabh-chakrabarthi/Kubernetes-Practice" target="_blank" class="project-card">
+        <div class="project-card-header">
+          <span class="project-name">Kubernetes Practice</span>
+          <span style="font-size:16px;opacity:0.4">↗</span>
+        </div>
+        <p class="project-desc">Hands-on Kubernetes exercises covering deployments, services, ConfigMaps, secrets, and cluster management. Practice repo for container orchestration concepts.</p>
+        <div class="project-meta">
+          <span class="project-lang"><span class="lang-dot" style="background:#326CE5"></span>Kubernetes</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/saurabh-chakrabarthi/Terraform_Practice" target="_blank" class="project-card">
+        <div class="project-card-header">
+          <span class="project-name">Terraform Practice</span>
+          <span style="font-size:16px;opacity:0.4">↗</span>
+        </div>
+        <p class="project-desc">Infrastructure as Code exercises for AWS, OCI, and multi-cloud deployments. Covers modules, state management, and best practices.</p>
+        <div class="project-meta">
+          <span class="project-lang"><span class="lang-dot" style="background:#7B42BC"></span>Terraform</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/saurabh-chakrabarthi/VisitCounter" target="_blank" class="project-card">
+        <div class="project-card-header">
+          <span class="project-name">Visit Counter</span>
+          <span style="font-size:16px;opacity:0.4">↗</span>
+        </div>
+        <p class="project-desc">Lightweight visitor tracking service built with Redis and Docker. Demonstrates stateful microservice patterns and container deployment.</p>
+        <div class="project-meta">
+          <span class="project-lang"><span class="lang-dot" style="background:#b07219"></span>Java</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/saurabh-chakrabarthi/Java-DSA-Repo" target="_blank" class="project-card">
+        <div class="project-card-header">
+          <span class="project-name">Java DSA Repository</span>
+          <span style="font-size:16px;opacity:0.4">↗</span>
+        </div>
+        <p class="project-desc">Data structures and algorithms implementations in Java. Covers arrays, linked lists, trees, graphs, sorting, and dynamic programming.</p>
+        <div class="project-meta">
+          <span class="project-lang"><span class="lang-dot" style="background:#b07219"></span>Java</span>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -567,36 +613,8 @@
 </footer>
 
 <script>
-  const langColors = { Python:'#3572A5',JavaScript:'#f1e05a',TypeScript:'#2b7489',Java:'#b07219','C++':'#f34b7d',C:'#555555',Go:'#00ADD8',Rust:'#dea584',Shell:'#89e051',Scala:'#c22d40',Ruby:'#701516',HTML:'#e34c26',CSS:'#563d7c',Jupyter:'#DA5B0B',R:'#198CE7' };
-
-  async function loadGitHubProjects() {
-    const container = document.getElementById('github-projects');
-    try {
-      const res = await fetch('https://api.github.com/users/saurabh-chakrabarthi/repos?sort=updated&per_page=30');
-      if (!res.ok) throw new Error();
-      const repos = await res.json();
-      const filtered = repos.filter(r => !r.fork).sort((a,b) => (b.stargazers_count+b.watchers_count)-(a.stargazers_count+a.watchers_count)).slice(0,9);
-      document.getElementById('stat-repos').textContent = repos.filter(r=>!r.fork).length;
-      if (!filtered.length) { container.innerHTML = '<div class="loading-state">No public repos found yet.</div>'; return; }
-      container.innerHTML = filtered.map(r => `
-        <a href="${r.html_url}" target="_blank" class="project-card">
-          <div class="project-card-header"><span class="project-name">${r.name}</span><span style="font-size:16px;opacity:0.4">↗</span></div>
-          <p class="project-desc">${r.description||'No description provided.'}</p>
-          <div class="project-meta">
-            ${r.language?`<span class="project-lang"><span class="lang-dot" style="background:${langColors[r.language]||'#888'}"></span>${r.language}</span>`:''}
-            ${r.stargazers_count>0?`<span class="project-stars">★ ${r.stargazers_count}</span>`:''}
-            ${r.updated_at?`<span class="project-stars" style="margin-left:auto">${new Date(r.updated_at).toLocaleDateString('en-US',{month:'short',year:'numeric'})}</span>`:''}
-          </div>
-        </a>`).join('');
-    } catch(e) {
-      container.innerHTML = `<div class="loading-state">Could not load repos. <a href="https://github.com/saurabh-chakrabarthi" target="_blank" style="color:var(--accent)">View on GitHub →</a></div>`;
-    }
-  }
-
   const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }), {threshold:0.08,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-
-  loadGitHubProjects();
 </script>
 </body>
 </html>
