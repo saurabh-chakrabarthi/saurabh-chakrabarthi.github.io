@@ -83,7 +83,8 @@
     .timeline-item:last-child { border-bottom: none; }
     .timeline-left { display: flex; flex-direction: column; gap: 8px; padding-top: 3px; }
     .timeline-date { font-size: 12px; font-family: var(--mono); color: var(--text-muted); }
-    .company-logo-placeholder { width: 32px; height: 32px; border-radius: 8px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--accent); font-family: var(--mono); }
+    .company-logo-placeholder { width: 48px; height: 48px; border-radius: 8px; background: #fff; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); padding: 4px; }
+    .company-logo-placeholder img { width: 100%; height: 100%; object-fit: contain; }
     .timeline-company { font-size: 11.5px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
     .timeline-role { font-size: 16px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 10px; }
     .timeline-desc { font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 12px; }
@@ -206,7 +207,6 @@
         <div class="hero-stats">
           <div class="stat-item"><span class="stat-val">14+</span><span class="stat-label">Years Exp.</span></div>
           <div class="stat-item"><span class="stat-val">10+</span><span class="stat-label">Major Platforms</span></div>
-          <div class="stat-item"><span class="stat-val" id="stat-repos">—</span><span class="stat-label">Public Repos</span></div>
           <div class="stat-item"><span class="stat-val">$50K+</span><span class="stat-label">OpEx Saved/yr</span></div>
         </div>
       </div>
@@ -317,7 +317,9 @@
 
       <div class="timeline-item">
         <div class="timeline-left">
-          <div class="company-logo-placeholder">ORC</div>
+          <div class="company-logo-placeholder">
+            <img src="assets/images/oracle.png" alt="Oracle" onerror="this.parentElement.innerHTML='ORC';this.parentElement.style.background='var(--accent-light)';this.parentElement.style.color='var(--accent)';this.parentElement.style.fontSize='10px';this.parentElement.style.fontWeight='700';this.parentElement.style.fontFamily='var(--mono)';" />
+          </div>
           <div class="timeline-date">Dec 2025 — Present</div>
         </div>
         <div>
@@ -342,11 +344,13 @@
 
       <div class="timeline-item">
         <div class="timeline-left">
-          <div class="company-logo-placeholder">PPL</div>
+          <div class="company-logo-placeholder">
+            <img src="assets/images/accelon.png" alt="PayPal" onerror="this.parentElement.innerHTML='PPL';this.parentElement.style.background='var(--accent-light)';this.parentElement.style.color='var(--accent)';this.parentElement.style.fontSize='10px';this.parentElement.style.fontWeight='700';this.parentElement.style.fontFamily='var(--mono)';" />
+          </div>
           <div class="timeline-date">Dec 2024 — Dec 2025</div>
         </div>
         <div>
-          <div class="timeline-company">PayPal</div>
+          <div class="timeline-company">PayPal (via Accelon Inc.)</div>
           <div class="timeline-role">Senior Backend Engineer — Platform Engineering</div>
           <div class="timeline-desc"><strong>Project: Snowglobe</strong> — PayPal's next-gen financial processing platform for Braintree transactions. Central post-processing engine handling <strong>25M+ daily transactions</strong> and multi-billion payment flows across USA, Australia, and Europe.</div>
           <ul class="timeline-bullets">
@@ -366,11 +370,13 @@
 
       <div class="timeline-item">
         <div class="timeline-left">
-          <div class="company-logo-placeholder">VGD</div>
+          <div class="company-logo-placeholder">
+            <img src="assets/images/randstad.png" alt="Vanguard" onerror="this.parentElement.innerHTML='VGD';this.parentElement.style.background='var(--accent-light)';this.parentElement.style.color='var(--accent)';this.parentElement.style.fontSize='10px';this.parentElement.style.fontWeight='700';this.parentElement.style.fontFamily='var(--mono)';" />
+          </div>
           <div class="timeline-date">Nov 2023 — Dec 2024</div>
         </div>
         <div>
-          <div class="timeline-company">Vanguard</div>
+          <div class="timeline-company">Vanguard (via Randstad Digital)</div>
           <div class="timeline-role">Senior Software Engineer — DevSecOps</div>
           <div class="timeline-desc">API Security on CA Layer 7 Gateway for Vanguard Authentication Services. Orchestrated deployment and scaling of API Gateway on AWS EKS, delivering resilient auth/authz services to Vanguard users.</div>
           <ul class="timeline-bullets">
@@ -389,11 +395,13 @@
 
       <div class="timeline-item">
         <div class="timeline-left">
-          <div class="company-logo-placeholder">MGI</div>
+          <div class="company-logo-placeholder">
+            <img src="assets/images/Kforce.png" alt="MoneyGram" onerror="this.parentElement.innerHTML='MGI';this.parentElement.style.background='var(--accent-light)';this.parentElement.style.color='var(--accent)';this.parentElement.style.fontSize='10px';this.parentElement.style.fontWeight='700';this.parentElement.style.fontFamily='var(--mono)';" />
+          </div>
           <div class="timeline-date">Mar 2021 — Nov 2023</div>
         </div>
         <div>
-          <div class="timeline-company">MoneyGram International</div>
+          <div class="timeline-company">MoneyGram International (via Kforce Inc.)</div>
           <div class="timeline-role">Senior Software Developer — Team Lead</div>
           <div class="timeline-desc">Financial API development for cross-border payment remittance across global transaction corridors. Integrated VISA, Mastercard, and crypto payment processors. Led distributed engineering teams across onsite and offshore locations.</div>
           <ul class="timeline-bullets">
@@ -412,13 +420,15 @@
 
       <div class="timeline-item">
         <div class="timeline-left">
-          <div class="company-logo-placeholder">CGN</div>
+          <div class="company-logo-placeholder">
+            <img src="assets/images/cognizant.png" alt="Cognizant" onerror="this.parentElement.innerHTML='CGN';this.parentElement.style.background='var(--accent-light)';this.parentElement.style.color='var(--accent)';this.parentElement.style.fontSize='10px';this.parentElement.style.fontWeight='700';this.parentElement.style.fontFamily='var(--mono)';" />
+          </div>
           <div class="timeline-date">Oct 2011 — Mar 2021</div>
         </div>
         <div>
           <div class="timeline-company">Cognizant</div>
           <div class="timeline-role">Software Developer → Tech Lead → Full-Stack Lead</div>
-          <div class="timeline-desc">9.5 years across India and the US, progressing from developer to team lead. Built real-time data streaming platforms, REST/SOAP APIs, ETL pipelines, and full-stack web applications for enterprise clients.</div>
+          <div class="timeline-desc">9.5 years across India and the US, progressing from developer to team lead. Built real-time data streaming platforms, REST/SOAP APIs, ETL pipelines, and full-stack web applications for enterprise clients including <strong>Enterprise Holdings, Pizza Hut, KFC, Dunkin' Brands, Papa John's</strong>.</div>
           <ul class="timeline-bullets">
             <li>Built scalable real-time data ingestion systems using Spark, Scala, Kafka, Hadoop, and Snowflake</li>
             <li>Developed REST and SOAP APIs in microservices with Spring Boot; OAuth 2.0 security and AWS integrations</li>
